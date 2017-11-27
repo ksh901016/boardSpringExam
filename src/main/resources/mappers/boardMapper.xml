@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성은 클래스의 패키지와 유사한 용도로, Mybatis 내에서 원하는 SQL문을 찾아서 실행할 때 동 -->
+<mapper namespace="org.hyunsworld.mapper.BoardMapper">
+    <insert id="create">
+        INSERT INTO TBL_BOARD
+             ( TITLE
+             , CONTENT
+             , WRITER)
+       VALUES( #{title}
+             , #{content}
+             , #{writer}) 
+    </insert>
+    
+    <select id="read" resultType="BoardVO">
+        SELECT BNO
+             , TITLE
+             , CONTENT
+             , WRITER
+             , REGDATE
+             , VIEWCNT
+          FROM TBL_BOARD
+         WHERE BNO = #{bno}
+    </select>
+    
+    <update id="update">
+        UPDATE TBL_BOARD
+           SET TITLE = #{title}
+             , CONTENT = #{content}
+         WHERE BNO = #{bno}
+    </update>
+    
+    <delete id="delete">
+        DELETE FROM TBL_BOARD
+         WHERE BNO = #{bno}
+    </delete>
+    
+    <select id="listAll" resultType="BoardVO">
+    <![CDATA[
+        SELECT BNO
+             , TITLE
+             , CONTENT
+             , WRITER
+             , REGDATE
+             , VIEWCNT
+          FROM TBL_BOARD
+         WHERE BNO > 0
+      ORDER BY BNO DESC, REGDATE DESC
+    ]]>
+    </select>
+</mapper>
