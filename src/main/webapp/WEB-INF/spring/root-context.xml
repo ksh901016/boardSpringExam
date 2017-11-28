@@ -33,4 +33,5 @@
     
     <!-- 패키지스캔 후 어노테이션을 bean으로 생성  -->
     <context:component-scan base-package="org.hyunsworld.persistence"></context:component-scan>
+    <context:component-scan base-package="org.hyunsworld.service"></context:component-scan>
 </beans>
