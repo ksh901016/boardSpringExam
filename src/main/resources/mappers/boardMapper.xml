@@ -51,4 +51,34 @@
       ORDER BY BNO DESC, REGDATE DESC
     ]]>
     </select>
+    
+    <select id="listPage" resultType="BoardVO">
+    <![CDATA[
+        SELECT BNO
+             , TITLE
+             , CONTENT
+             , WRITER
+             , REGDATE
+             , VIEWCNT
+          FROM TBL_BOARD
+         WHERE BNO > 0
+      ORDER BY BNO DESC, REGDATE DESC
+         LIMIT #{page}, 10
+    ]]>
+    </select>
+    
+    <select id="listPage" resultType="BoardVO">
+    <![CDATA[
+        SELECT BNO
+             , TITLE
+             , CONTENT
+             , WRITER
+             , REGDATE
+             , VIEWCNT
+          FROM TBL_BOARD
+         WHERE BNO > 0
+      ORDER BY BNO DESC, REGDATE DESC
+         LIMIT #{pageStart}, #{perPageNum}
+    ]]>
+    </select>
 </mapper>

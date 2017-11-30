@@ -1,5 +1,7 @@
 package org.hyunsworld.test;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hyunsworld.domain.BoardVO;
@@ -30,7 +32,10 @@ public class BoardDAOTest {
 	}
 	@Test
 	public void testRead() throws Exception {
-		logger.info(dao.read(1).toString());
+	    List<BoardVO> list = dao.listAll();
+	    for(BoardVO result : list) {
+	        logger.info(result.toString());
+	    }
 	}
 	//@Test
 	public void testUpdate() throws Exception{
@@ -43,6 +48,19 @@ public class BoardDAOTest {
 	
 	//@Test
 	public void testDelete() throws Exception{
-		dao.delete(1);
+		dao.delete(2);
+		dao.delete(3);
+		dao.delete(4);
+		dao.delete(5);
+	}
+	
+	@Test
+	public void testListPage() throws Exception{
+	    int page = 3;
+	    List<BoardVO> list = dao.listPage(page);
+	    
+	    for(BoardVO boardVO : list) {
+	        logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
+	    }
 	}
 }

@@ -3,6 +3,7 @@ package org.hyunsworld.persistence;
 import java.util.List;
 
 import org.hyunsworld.domain.BoardVO;
+import org.hyunsworld.domain.Criteria;
 
 public interface BoardDAO {
 	public void create(BoardVO vo) throws Exception;
@@ -10,4 +11,6 @@ public interface BoardDAO {
 	public void update(BoardVO vo) throws Exception;
 	public void delete(int bno) throws Exception;
 	public List<BoardVO> listAll() throws Exception;
+	public List<BoardVO> listPage(int page) throws Exception;
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 }
