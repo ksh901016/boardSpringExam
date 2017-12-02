@@ -67,7 +67,7 @@
     ]]>
     </select>
     
-    <select id="listPage" resultType="BoardVO">
+    <select id="listCriteria" resultType="BoardVO">
     <![CDATA[
         SELECT BNO
              , TITLE
