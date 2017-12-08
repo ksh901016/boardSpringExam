@@ -3,6 +3,8 @@ package org.hyunsworld.controller;
 import javax.inject.Inject;
 
 import org.hyunsworld.domain.BoardVO;
+import org.hyunsworld.domain.Criteria;
+import org.hyunsworld.domain.PageMaker;
 import org.hyunsworld.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +42,12 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
-	@RequestMapping(value="/listAll", method=RequestMethod.GET)
-	public void listAll(Model model) throws Exception{
+	//@RequestMapping(value="/listAll", method=RequestMethod.GET)
+	@RequestMapping(value="/listCri", method=RequestMethod.GET)
+	public void listAll(Criteria cri, Model model) throws Exception{
 		logger.info("show all list........");
-		model.addAttribute("list", service.listAll());
+		//model.addAttribute("list", service.listAll());
+		model.addAttribute("list", service.listCriteria(cri));
 	}
 	
 	@RequestMapping(value="/read", method=RequestMethod.GET)
@@ -72,4 +76,17 @@ public class BoardController {
 	    rttr.addFlashAttribute("msg", "SUCCESS");
 	    return "redirect:/board/listAll";
     }
+	
+	@RequestMapping(value="/listPage", method=RequestMethod.GET)
+	public void listPage(Criteria cri, Model model) throws Exception{
+	    logger.info(cri.toString());
+	    
+	    model.addAttribute("list", service.listCriteria(cri));
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+	    //pageMaker.setTotalCount(4097);
+	    pageMaker.setTotalCount(service.listCountCriteria(cri));
+	    
+	    model.addAttribute("pageMaker", pageMaker);
+	}
 }

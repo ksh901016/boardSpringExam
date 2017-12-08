@@ -6,7 +6,7 @@ public class Criteria {
     
     public Criteria() {
         this.page = 1;
-        this.perPageNum = 10;
+        this.perPageNum = 20;
     }
     
     public void setPage(int page) {
@@ -27,6 +27,10 @@ public class Criteria {
     
     public int getPage() {
         return page;
+    }
+    
+    public int getPerPageNum() {
+        return this.perPageNum;
     }
     
     // method for MyBatis SQL Mapper -

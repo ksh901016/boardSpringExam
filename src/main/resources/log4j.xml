@@ -11,9 +11,14 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.zerock.web">
+	<logger name="org.hyunsworld.controller">
 		<level value="info" />
 	</logger>
+    
+    <!-- Application Loggers -->
+    <logger name="org.hyunsworld.persistence">
+        <level value="info" />
+    </logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

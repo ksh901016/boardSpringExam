@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
@@ -30,7 +32,7 @@ public class BoardDAOTest {
 		board.setWriter("user00");
 		dao.create(board);
 	}
-	@Test
+	//@Test
 	public void testRead() throws Exception {
 	    List<BoardVO> list = dao.listAll();
 	    for(BoardVO result : list) {
@@ -54,7 +56,7 @@ public class BoardDAOTest {
 		dao.delete(5);
 	}
 	
-	@Test
+	//@Test
 	public void testListPage() throws Exception{
 	    int page = 3;
 	    List<BoardVO> list = dao.listPage(page);
@@ -62,5 +64,16 @@ public class BoardDAOTest {
 	    for(BoardVO boardVO : list) {
 	        logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
 	    }
+	}
+	
+	@Test
+	public void testURI() throws Exception{
+	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
+	            .path("/board/read")
+	            .queryParam("bno", 12)
+	            .queryParam("perPageNum", 20)
+	            .build();
+	    
+	    logger.info(uriComponents.toString());
 	}
 }
