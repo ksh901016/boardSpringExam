@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hyunsworld.domain.BoardVO;
 import org.hyunsworld.domain.Criteria;
+import org.hyunsworld.domain.SearchCriteria;
 
 public interface BoardService {
 	public void regist(BoardVO board) throws Exception;
@@ -13,4 +14,6 @@ public interface BoardService {
 	public List<BoardVO> listAll() throws Exception;
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	public int listCountCriteria(Criteria cri) throws Exception;
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	public int listSearchCount(SearchCriteria cri) throws Exception;
 }

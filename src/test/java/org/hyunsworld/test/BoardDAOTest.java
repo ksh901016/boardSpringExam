@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.hyunsworld.domain.BoardVO;
+import org.hyunsworld.domain.SearchCriteria;
 import org.hyunsworld.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,7 +67,7 @@ public class BoardDAOTest {
 	    }
 	}
 	
-	@Test
+	//@Test
 	public void testURI() throws Exception{
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	            .path("/board/read")
@@ -75,5 +76,23 @@ public class BoardDAOTest {
 	            .build();
 	    
 	    logger.info(uriComponents.toString());
+	}
+	
+	@Test
+	public void testDynamic1() throws Exception{
+	    SearchCriteria cri = new SearchCriteria();
+	    cri.setPage(1);
+	    cri.setKeyword("글");
+	    cri.setSearchType("tc");
+	    
+	    logger.info("==========================");
+	    
+	    List<BoardVO> list = dao.listSearch(cri);
+	    for(BoardVO boardVO : list) {
+	        logger.info(boardVO.getBno() +":" + boardVO.getTitle());
+	    }
+	    
+	    logger.info("==========================");
+	    //logger.info("COUNT : " + dao.listSearchCount(cri));
 	}
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.hyunsworld.domain.BoardVO;
 import org.hyunsworld.domain.Criteria;
+import org.hyunsworld.domain.SearchCriteria;
 import org.hyunsworld.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 @Service
@@ -47,6 +48,16 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int listCountCriteria(Criteria cri) throws Exception {
         return dao.countPaging(cri);
+    }
+
+    @Override
+    public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+        return dao.listSearch(cri);
+    }
+
+    @Override
+    public int listSearchCount(SearchCriteria cri) throws Exception {
+        return dao.listSearchCount(cri);
     }
 
 }
