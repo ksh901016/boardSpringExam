@@ -5,7 +5,7 @@ import java.util.Date;
 public class ReplyVO {
     private int bno;
     private int rno;
-    private String replytext;
+    private String replyText;
     private String replyer;
     private Date regdate;
     public int getBno() {
@@ -20,11 +20,11 @@ public class ReplyVO {
     public void setRno(int rno) {
         this.rno = rno;
     }
-    public String getReplytext() {
-        return replytext;
+    public String getReplyText() {
+        return replyText;
     }
-    public void setReplytext(String replytext) {
-        this.replytext = replytext;
+    public void setReplyText(String replyText) {
+        this.replyText = replyText;
     }
     public String getReplyer() {
         return replyer;
