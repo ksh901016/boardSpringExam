@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성은 클래스의 패키지와 유사한 용도로, Mybatis 내에서 원하는 SQL문을 찾아서 실행할 때 동 -->
+<mapper namespace="org.hyunsworld.mapper.MessageMapper">
+    <insert id="create">
+        INSERT INTO TBL_MESSAGE
+             ( TARGETID
+             , SENDER
+             , MESSAGE)
+       VALUES( #{targetId}
+             , #{sender}
+             , #{message})
+    </insert>
+    
+    <select id="readMessage" resultType="MessageVO">
+        SELECT * 
+          FROM TBL_MESSAGE
+         WHERE MID = #{mid}
+    </select>
+    
+    <update id="updateState">
+        UPDATE TBL_MESSAGE
+           SET OPENDATE = NOW()
+         WHERE MID = #{mid}
+    </update>
+</mapper>
