@@ -40,4 +40,9 @@
           FROM TBL_REPLY
          WHERE BNO = #{bno}
     </select>
+    <select id="getBno" resultType="int">
+        SELECT BNO
+          FROM TBL_REPLY
+         WHERE RNO = #{rno}
+    </select>
 </mapper>

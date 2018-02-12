@@ -39,4 +39,8 @@ public class ReplyVO {
         this.regdate = regdate;
     }
     
+    @Override
+    public String toString() {
+        return "[ bno="+bno + ", rno=" + rno + ", replyText=" + replyText + ", replyer=" + replyer + ", regdate=" + regdate+"]";
+    }
 }

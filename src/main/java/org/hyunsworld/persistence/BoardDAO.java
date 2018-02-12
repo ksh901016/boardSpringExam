@@ -18,4 +18,6 @@ public interface BoardDAO {
 	// 검색조건 추가 
 	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception;
 	public int listSearchCount(SearchCriteria cri) throws Exception;
+	public void updateReplyCnt(int bno, int amount) throws Exception;
+	public void updateViewCnt(int bno) throws Exception;
 }

@@ -35,6 +35,12 @@
        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
     
+    <!-- transaction Manager 설정 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <tx:annotation-driven/>
+    
     <!-- 패키지스캔 후 어노테이션을 bean으로 생성  -->
     <context:component-scan base-package="org.hyunsworld.persistence"></context:component-scan>
     <context:component-scan base-package="org.hyunsworld.service"></context:component-scan>

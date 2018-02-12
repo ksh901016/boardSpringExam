@@ -47,5 +47,7 @@ public class MessageVO {
         this.sendDate = sendDate;
     }
     
-    
+    public String toString() {
+        return super.toString() + "[mid=" + mid+", targetId=" + targetId + ", sender=" + sender+", message=" + message +"]";
+    }
 }

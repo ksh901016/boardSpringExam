@@ -37,7 +37,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public void ajaxTest() {
-	    
+	public void ajaxTest(String name) {
+	    logger.info(name);
 	}
 }

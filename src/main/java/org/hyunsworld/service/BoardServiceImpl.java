@@ -9,6 +9,8 @@ import org.hyunsworld.domain.Criteria;
 import org.hyunsworld.domain.SearchCriteria;
 import org.hyunsworld.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -20,8 +22,10 @@ public class BoardServiceImpl implements BoardService {
 		dao.create(board);
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
+	    dao.updateViewCnt(bno);
 		return dao.read(bno);
 	}
 

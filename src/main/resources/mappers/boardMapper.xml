@@ -46,6 +46,7 @@
              , WRITER
              , REGDATE
              , VIEWCNT
+             , REPLYCNT
           FROM TBL_BOARD
          WHERE BNO > 0
       ORDER BY BNO DESC, REGDATE DESC
@@ -60,6 +61,7 @@
              , WRITER
              , REGDATE
              , VIEWCNT
+             , REPLYCNT
           FROM TBL_BOARD
          WHERE BNO > 0
       ORDER BY BNO DESC, REGDATE DESC
@@ -75,6 +77,7 @@
              , WRITER
              , REGDATE
              , VIEWCNT
+             , REPLYCNT
           FROM TBL_BOARD
          WHERE BNO > 0
       ORDER BY BNO DESC, REGDATE DESC
@@ -96,6 +99,7 @@
              , WRITER
              , REGDATE
              , VIEWCNT
+             , REPLYCNT
           FROM TBL_BOARD
          WHERE BNO > 0
      ]]>
@@ -147,4 +151,16 @@
             </if>
         </if>
      </sql>
+     
+     <update id="updateReplyCnt">
+        UPDATE TBL_BOARD
+           SET REPLYCNT = REPLYCNT + #{amount}
+         WHERE BNO = #{bno}
+     </update>
+     
+     <update id="updateViewCnt">
+        UPDATE TBL_BOARD
+           SET VIEWCNT = VIEWCVNT + 1
+         WHERE BNO = #{bno}
+     </update>
 </mapper>
